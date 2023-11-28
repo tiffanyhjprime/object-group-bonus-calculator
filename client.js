@@ -50,8 +50,37 @@ console.log('array of employee data: ',  employees );
 //
 function calculateIndividualEmployeeBonus( employee ) {  
   // your logic here
-  
+    //work the individual bonus rules(conditionals)
+
+    //if rating is 2, bonus is 0
+
+    //if rating is 3, bonus is 4%
+
+    //if rating is 4, bonus is 6%
+
+    //if rating is 5, bonus is 10%
+
+    //if employeeNumber is 4 digits long, bonus + 5%
+        //string.length ===4
+
+    //if annualIncome is > 65000, bonus is -1%
+
+    //if bonus is > 13%, bonus = 13
+    //if bonus is <0, bonus = 0
   
   // return new object with bonus results
 
+  let result = {
+    name: '<NAME>',
+    bonusPercentage:'<BONUS PERCENTAGE>',
+    totalCompensation:'<TOTAL COMPENSATION>',
+    totalBonus: '<TOTAL BONUS>',
+  }
+  console.log('bonus for $(employee.name):',result)
+  return result
 }
+
+
+//call function for an employee
+    //todo: later this will be a loop for all employees
+calculateIndividualEmployeeBonus(employees[0])
