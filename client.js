@@ -75,26 +75,42 @@ function calculateIndividualEmployeeBonus( employee ) {
 
     //if employeeNumber is 4 digits long, bonus + 5%
         //string.length ===4
-    if(employee.employeeNumber.length ===4){
+    if(employee.employeeNumber.length ===4 ){
       bonus = bonus + 5
     }
 
     //if annualIncome is > 65000, bonus is bonus-1%
     if(Number(employee.annualSalary) > 65000){
-      bonus = bonus - 1;
+      bonus = bonus - 1
     }
 
     //if bonus is > 13%, bonus = 13
     //if bonus is <0, bonus = 0
-  
+    if(bonus > 13){
+      bonus = 13
+    }
+    if(bonus < 0){
+      bonus = 0
+    }
+
+  //calculate total compensation bonus/100
+  let bonusPercentage = bonus / 100
+  console.log('bonus percentage is:', bonusPercentage)
+
+  //calculate totalBonus - 
+let totalBonus = bonusPercentage * employee.annualSalary
+
+let totalCompensation = Number(employee.annualSalary) + totalBonus
+console.log("total compensation", totalCompensation)
+
   // return new object with bonus results
 
   let result = {
     name: employee.name,
-    bonusPercentage:bonus,
-    totalCompensation:'<TOTAL COMPENSATION>',
-    totalBonus: '<TOTAL BONUS>',
-  }
+    bonusPercentage: bonusPercentage,
+    totalCompensation: totalCompensation,
+    totalBonus: totalBonus
+    }
   console.log('bonus for $(employee.name):',result)
   return result
 }
@@ -102,4 +118,10 @@ function calculateIndividualEmployeeBonus( employee ) {
 
 //call function for an employee
     //todo: later this will be a loop for all employees
-calculateIndividualEmployeeBonus(employees[2])
+calculateIndividualEmployeeBonus(employees[0])
+
+//loop to run function over all employees and console log
+
+for(let empl of employees){
+  console.log(calculateIndividualEmployeeBonus(empl))
+}
