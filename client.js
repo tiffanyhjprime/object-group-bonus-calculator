@@ -52,18 +52,37 @@ function calculateIndividualEmployeeBonus( employee ) {
   // your logic here
     //work the individual bonus rules(conditionals)
 
+  let bonus;
     //if rating is 2, bonus is 0
+    if(employee.reviewRating <= 2){
+      bonus = 0
+    }
 
     //if rating is 3, bonus is 4%
+    if(employee.reviewRating === 3){
+      bonus = 4
+    }
 
     //if rating is 4, bonus is 6%
+    if(employee.reviewRating === 4){
+      bonus = 6
+    }
 
     //if rating is 5, bonus is 10%
+    if(employee.reviewRating === 5){
+      bonus = 6
+    }
 
     //if employeeNumber is 4 digits long, bonus + 5%
         //string.length ===4
+    if(employee.employeeNumber.length ===4){
+      bonus = bonus + 5
+    }
 
-    //if annualIncome is > 65000, bonus is -1%
+    //if annualIncome is > 65000, bonus is bonus-1%
+    if(Number(employee.annualSalary) > 65000){
+      bonus = bonus - 1;
+    }
 
     //if bonus is > 13%, bonus = 13
     //if bonus is <0, bonus = 0
@@ -71,8 +90,8 @@ function calculateIndividualEmployeeBonus( employee ) {
   // return new object with bonus results
 
   let result = {
-    name: '<NAME>',
-    bonusPercentage:'<BONUS PERCENTAGE>',
+    name: employee.name,
+    bonusPercentage:bonus,
     totalCompensation:'<TOTAL COMPENSATION>',
     totalBonus: '<TOTAL BONUS>',
   }
@@ -83,4 +102,4 @@ function calculateIndividualEmployeeBonus( employee ) {
 
 //call function for an employee
     //todo: later this will be a loop for all employees
-calculateIndividualEmployeeBonus(employees[0])
+calculateIndividualEmployeeBonus(employees[2])
